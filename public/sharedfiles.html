@@ -1,0 +1,283 @@
+<!doctype html>
+<html class="no-js " lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta name="description" content="Secure file sharing Application">
+
+<title>Poly Share - secure file sharing Application</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery-jvectormap-2.0.3.min.css">
+<!-- Custom Css -->
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/color_skins.css">
+<link href="css/semantic.min.css" rel="stylesheet">
+
+</head>
+<body class="theme-cyan">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" src="images/logo.svg" width="48" height="48" alt="Poly Share"></div>
+        <p>Please wait...</p>
+    </div>
+</div>
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<!-- Top Bar -->
+<nav class="navbar">
+    <div class="col-12">        
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="bars"></a>
+            <a class="navbar-brand" href><img src="images/logo.svg" width="30" alt="Poly Share"><span class="m-l-10">Poly Share</span></a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>            
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
+                <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right slideDown">
+                    <li class="header">NOTIFICATIONS</li>
+                    <li class="body">
+                        <ul class="menu list-unstyled">
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-blue"><i class="zmdi zmdi-account"></i></div>
+                                <div class="menu-info">
+                                    <h4>8 New Members joined</h4>
+                                    <p><i class="zmdi zmdi-time"></i> 14 mins ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-amber"><i class="zmdi zmdi-shopping-cart"></i></div>
+                                <div class="menu-info">
+                                    <h4>4 Sales made</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 22 mins ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-red"><i class="zmdi zmdi-delete"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>Nancy Doe</b> Deleted account</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 3 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-green"><i class="zmdi zmdi-edit"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>Nancy</b> Changed name</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 2 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-grey"><i class="zmdi zmdi-comment-text"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>John</b> Commented your post</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 4 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-purple"><i class="zmdi zmdi-refresh"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>John</b> Updated status</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 3 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-light-blue"><i class="zmdi zmdi-settings"></i></div>
+                                <div class="menu-info">
+                                    <h4>Settings Updated</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> Yesterday </p>
+                                </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="footer"> <a href="javascript:void(0);">View All Notifications</a> </li>
+                </ul>
+            </li>
+           
+            <li><a href="sign-in.html" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <div class="menu">
+        <ul class="list">
+            <li>
+                <div class="user-info">
+                    <div class="image"><a href="profile.html"><img src="images/profile_av.jpg" alt="User"></a></div>
+                    <div style="padding-bottom: 10px;" class="detail">
+                        <h4>Michael</h4>                 
+                    </div>
+                </div>
+            </li>
+            <li class="active open"> 
+                <a href="dash.html" class="menu-toggle dash">
+                    <i class="zmdi zmdi-home"></i><span>Dashboard</span>
+                </a>
+            </li>           
+            <li> 
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-swap-alt"></i>
+                    <span>Files</span> 
+                </a>
+                <ul class="ml-menu">
+                    <li> 
+                        <a href="/myfiles">My Files</a> 
+                    </li>       
+                    <li> 
+                        <a href="/sharefile">Shared with me</a> 
+                    </li>              
+                    <li> 
+                        <a href="/fileupload">File Upload</a> 
+                    </li>                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+
+<!-- Chat-launcher -->
+
+
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Dashboard
+                <small class="text-muted">Welcome to Poly Share</small>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12">
+                <div style="padding: 15px;font-size: 20px;flex-flow: row;display: flex;" class="card">
+                   <div style="flex:auto;">Recent Files </div>
+                   <div class="input-group" style="width: 200px;">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-addon">
+                        <i class="zmdi zmdi-search"></i>
+                    </span>
+                </div>
+                </div>
+                <div id="files_list" class="row clearfix">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Jquery Core Js --> 
+<script src="js/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="js/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+<script src="js/mainscripts.bundle.js"></script>
+<script  src="js/semantic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+
+<script>
+                           
+            $.ajax({
+                    type: 'GET',
+                    url: '/sharedfiles',
+                    data:{
+                        id:localStorage.getItem('key')
+                    },
+                    success: function(data) {
+                        console.log(data);
+                       
+                        for(i in data){
+
+                        var a = Object.keys(data[i]);
+                        var index=0;
+                            for(j in data[i]){
+                                document.getElementById('files_list').innerHTML+=`<div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="card project_widget">
+                            <div class="header">
+                                <h2> 
+                                </h2>
+                                <ul class="header-dropdown">
+                                    <li class="edit">
+                                        <a onclick="stopshare('`+data[i][j].fileid+`','`+data[i][j].userid+`')" role="button" class="boxs-edit"><i class="zmdi zmdi-download"></i></a>
+                                    </li>
+                                    <li class="remove">
+                                        <a onclick="deletefile('`+data[i][j].fileid+`','`+data[i][j].userid+`')" role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                                    </li>
+                                    <li class="share">
+                                        <a onclick="downloadfile('`+data[i].url+`')"  role="button" class="boxs-edit"><i class="zmdi zmdi-download"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="body">
+                                <div class="file-name text-center">
+                                <h6 class="m-b-5 text-muted">`+data[i][j].name+`</h6>
+                                <small style="color: #00acc4;font-size:95%;">`+data[i][j].size+`</small>
+                            </div>
+                            </div>
+                        </div>
+                    </div>`;
+                    ++index;
+                            }
+                            
+                    
+                        }
+                        //$('.ui.normal.dropdown').dropdown({});
+                    }
+                });
+
+
+                function downloadfile(url){
+
+toDataURL(url, function(dataUrl) {
+ console.log('RESULT:', dataUrl)
+  let data = dataUrl;
+  const mimeType = data.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/)[1]
+  let mid = data.split('base64,');
+
+
+    var t = "1234567890ABCDEFGHIJKLMN";
+    var key = CryptoJS.MD5(t).toString()
+    var param = mid[1];
+    console.log(param.toString());
+    var descrypt = CryptoJS.TripleDES.decrypt(param, key).toString(CryptoJS.enc.Utf8);
+
+    // let key = "1234567890ABCDEFGHIJKLMN"
+    // let IV = "12345678"
+    // let cipher = CryptoJS.TripleDES.decrypt(mid[1], CryptoJS.enc.Utf8.parse(key), {
+    //                                     iv: CryptoJS.enc.Utf8.parse(IV),
+    //                                     mode: CryptoJS.mode.CBC
+    //             });
+    console.log(mid[0]+"base64,"+descrypt.toString());
+
+})
+}
+
+
+function toDataURL(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    var reader = new FileReader();
+    reader.onloadend = function() {
+      callback(reader.result);
+    }
+    reader.readAsDataURL(xhr.response);
+  };
+  xhr.open('GET', url);
+  xhr.responseType = 'blob';
+  xhr.send();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!doctype html>
+<html class="no-js " lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta name="description" content="Secure file sharing Application">
+
+<title>Poly Share - secure file sharing Application</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery-jvectormap-2.0.3.min.css">
+<!-- Custom Css -->
+<link rel="stylesheet" href="css/dropzone.css">
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/color_skins.css">
+<link rel="stylesheet" href="css/sweetalert.css">
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC225BiMpemJip8Cl9EKQDTz6zhz7N0IFI",
+    authDomain: "fir-auth-11fc1.firebaseapp.com",
+    databaseURL: "https://fir-auth-11fc1.firebaseio.com",
+    projectId: "fir-auth-11fc1",
+    storageBucket: "fir-auth-11fc1.appspot.com",
+    messagingSenderId: "515958183972",
+    appId: "1:515958183972:web:19a94ee130d5e79b7060b1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+</head>
+<body class="theme-cyan">
+<!-- Page Loader -->
+<div id="loader" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" src="images/logo.svg" width="48" height="48" alt="Poly Share"></div>
+        <p>Please wait...</p>
+    </div>
+</div>
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<!-- Top Bar -->
+<nav class="navbar">
+    <div class="col-12">        
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="bars"></a>
+            <a class="navbar-brand" href><img src="images/logo.svg" width="30" alt="Poly Share"><span class="m-l-10">Poly Share</span></a>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>            
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
+                <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right slideDown">
+                    <li class="header">NOTIFICATIONS</li>
+                    <li class="body">
+                        <ul class="menu list-unstyled">
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-blue"><i class="zmdi zmdi-account"></i></div>
+                                <div class="menu-info">
+                                    <h4>8 New Members joined</h4>
+                                    <p><i class="zmdi zmdi-time"></i> 14 mins ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-amber"><i class="zmdi zmdi-shopping-cart"></i></div>
+                                <div class="menu-info">
+                                    <h4>4 Sales made</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 22 mins ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-red"><i class="zmdi zmdi-delete"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>Nancy Doe</b> Deleted account</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 3 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-green"><i class="zmdi zmdi-edit"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>Nancy</b> Changed name</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 2 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-grey"><i class="zmdi zmdi-comment-text"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>John</b> Commented your post</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 4 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-purple"><i class="zmdi zmdi-refresh"></i></div>
+                                <div class="menu-info">
+                                    <h4><b>John</b> Updated status</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> 3 hours ago </p>
+                                </div>
+                                </a> </li>
+                            <li> <a href="javascript:void(0);">
+                                <div class="icon-circle bg-light-blue"><i class="zmdi zmdi-settings"></i></div>
+                                <div class="menu-info">
+                                    <h4>Settings Updated</h4>
+                                    <p> <i class="zmdi zmdi-time"></i> Yesterday </p>
+                                </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="footer"> <a href="javascript:void(0);">View All Notifications</a> </li>
+                </ul>
+            </li>
+           
+            <li><a href="sign-in.html" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <div class="menu">
+        <ul class="list">
+            <li>
+                <div class="user-info">
+                    <div class="image"><a href="profile.html"><img src="images/profile_av.jpg" alt="User"></a></div>
+                    <div style="padding-bottom: 10px;" class="detail">
+                        <h4>Michael</h4>                 
+                    </div>
+                </div>
+            </li>
+            <li class="active open"> 
+                <a href="dash.html" class="menu-toggle dash">
+                    <i class="zmdi zmdi-home"></i><span>Dashboard</span>
+                </a>
+            </li>           
+            <li> 
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-swap-alt"></i>
+                    <span>Files</span> 
+                </a>
+                <ul class="ml-menu">
+                    <li> 
+                        <a href="/myfiles">My Files</a> 
+                    </li>   
+                    <li> 
+                        <a href="/sharefile">Shared with me</a> 
+                    </li>                 
+                    <li> 
+                        <a href="/fileupload">File Upload</a> 
+                    </li>                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+
+<!-- Chat-launcher -->
+
+
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>Dashboard
+                <small class="text-muted">Welcome to Poly Share</small>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>File Upload</strong> 
+                         </h2>
+                    </div>
+                    <div class="body">
+                        <div onclick="document.getElementById('pdf_files').click()" id="frmFileUpload" class="dropzone dz-clickable"  enctype="multipart/form-data">
+                            <div class="dz-message">
+                                <div class="drag-icon-cph"> <i class="material-icons">touch_app</i> </div>
+                                <h3>click to upload.</h3>
+                                <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em> 
+                            </div>
+                                <input type="file" onclick="trigger_event()" id="pdf_files" name="pdf_files[]"  style="cursor:pointer;padding: 2px;width: 100%;height: 110px;opacity: 0;display: none;/* background: #2979FF; */" placeholder="Drag and Drop"></div>
+                            <div id="file_list" class="row clearfix pb-4 pt-4 pl-4 pr-4 mt-2" style="background: #eeeeee;margin: 1px;">
+                                <div id="no_files" style="font-size:20px;">
+                                    No files Uploaded
+                                </div>
+                                <div id="upload_button" style="font-size: 20px;display: none;" class="col-lg-12 pb-4 text-right">
+                                    <button onclick="upload();" class="btn btn-raised btn-info btn-simple btn-round">upload</button>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Jquery Core Js --> 
+<script src="js/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) --> 
+<script src="js/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+<script src="js/mainscripts.bundle.js"></script>
+<script src="js/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+
+<script>
+    var file_info=[];
+    var file_index=-1;
+  function trigger_event(){
+          function pdfhandleFileSelect(evt) {
+              var files = evt.target.files;
+              var flag=0;
+              for (var i = 0, f; f = files[i]; i++) {
+                ++file_index;
+                var reader = new FileReader()
+                reader.onload = (function(theFile) {
+                  return function(e) {
+                    var sizeinbytes = theFile.size;
+                     var fSExt = new Array('Bytes', 'KB', 'MB', 'GB');
+                     fSize = sizeinbytes; i=0;while(fSize>900){fSize/=1024;i++;}
+                        document.getElementById('no_files').style.display='none';
+                        document.getElementById('upload_button').style.display='block';
+                       // console.log(e.target.result)
+                        let data = e.target.result
+                        const mimeType = data.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/)[1]
+                        //console.log(mimeType);
+                        let mid = data.split('base64,');
+                       // console.log(mid);
+                       // console.log(data);
+                        var t = "1234567890ABCDEFGHIJKLMN";
+                         //    var d = "12345678";
+                        var key = CryptoJS.MD5(t).toString()
+                        var param = CryptoJS.TripleDES.encrypt(mid[1], key).toString();
+                        console.log(param.toString());
+                        //console.log('decrypt',CryptoJS.TripleDES.decrypt(param, key).toString())
+
+                        
+                        // let cipher = CryptoJS.TripleDES.encrypt(mid[1], CryptoJS.enc.Utf8.parse(key), {
+                        //                 iv: CryptoJS.enc.Utf8.parse(IV),
+                        //                 mode: CryptoJS.mode.CBC
+                        //                 });
+
+                           // console.log(cipher.toString())
+                            
+                        var ref = firebase.storage().ref().child("ISCAT/"+theFile.name);
+                            ref.putString(mid[0]+"base64,"+param.toString(), 'data_url').then(function(snapshot) {
+                                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                                    //console.log("File available at", downloadURL);
+                                     file_info.push({
+                                        data:downloadURL,
+                                        name:theFile.name,
+                                        size:(Math.round(fSize*100)/100)+' '+fSExt[i],
+                                        index:file_index,
+                                        type:theFile.type
+                                            })
+                                    });
+                            });
+                    
+                   // console.log(e.target.result);
+                     document.getElementById('file_list').innerHTML+=`<div id="file_key_`+file_index+`" class="col-lg-3 col-md-4 col-sm-12 pb-2">
+                <div class="card pb-4 mb-0">
+                    <div class="file">
+                        <a href="#">
+                            <div class="hover text-right">
+                                <button onclick="delete_file('`+file_index+`')" type="button" class="btn btn-icon btn-icon-mini btn-round btn-danger">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                            </div>
+                            <div class="icon text-center">
+                                <i class="zmdi zmdi-file-text pb-2" style="font-size: 35px;"></i>
+                            </div>
+                            <div class="file-name text-center">
+                                <p class="m-b-5 text-muted">`+theFile.name+`</p>
+                                <small>Size: `+(Math.round(fSize*100)/100)+' '+fSExt[i]+` </small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>`;
+                  };
+                })(f);
+               reader.readAsDataURL(f);
+              }
+              document.getElementById('pdf_files').removeEventListener('change',pdfhandleFileSelect);
+             
+            }
+      document.getElementById('pdf_files').addEventListener('change', pdfhandleFileSelect, false);
+    }
+    function delete_file(index){
+        console.log(index);
+        document.getElementById('file_key_'+index).remove();
+        file_info = file_info.slice(0,index).concat(file_info.slice(index+1,file_info.length))
+        console.log(file_info);
+        --file_index;
+    }
+
+    function upload(){
+
+       
+
+    document.getElementById("loader").style.display="block";
+        var obj = {
+            data:file_info,
+            id:localStorage.getItem('key')
+        }
+        console.log(file_info);
+        $.ajax({
+						type: 'POST',
+						data: JSON.stringify(obj),
+				        contentType: 'application/json',
+                        url: '/uploading',						
+                        success: function(data) {
+                            console.log(JSON.stringify(data));
+                            if(data=="2"){
+                                document.getElementById("loader").style.display="none";
+                                swal({
+                                     title: "Good job!",
+                                     text: "File uploaded successfully",
+                                     type: "success",
+                                     showCancelButton: false,
+                                     confirmButtonColor: "#DD6B55",
+                                     confirmButtonText: "Done",
+                                      cancelButtonText: false,
+                                     closeOnConfirm: false,
+                                    closeOnCancel: false
+                                 }, function (isConfirm) {
+                                           if (isConfirm) {
+                                               window.location="/myfiles"
+                                         } 
+                                    });
+                            }
+                           // window.location="/dash";
+                        }
+                    });
+    }
+
+
+</script>
+</body>
+</html>

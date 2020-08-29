@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="no-js " lang="en">
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Secure file sharing Application">
+
+    <title>Poly Share - secure file sharing Application</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/authentication.css">
+    <link rel="stylesheet" href="css/color_skins.css">
+</head>
+
+<body class="theme-cyan authentication sidebar-collapse">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
+    <div class="container">        
+        <div class="navbar-translate n_logo">
+            <a class="navbar-brand" href="#" title target="_blank">Poly Share</a>
+        </div>
+    </div>
+</nav>
+<!-- End Navbar -->
+<div class="page-header">
+    <div class="page-header-image" style="background-image:url(images/login.jpg)"></div>
+    <div class="container">
+        <div class="col-md-12 content-center">
+            <div class="card-plain">
+                <form class="form" id="form">
+                    <div class="header">
+                        <div class="logo-container">
+                            <img src="images/logo.svg" alt>
+                        </div>
+                        <h5>Log in</h5>
+                    </div>
+                    <div class="content">                                                
+                        <div class="input-group input-lg">
+                            <input id="email" type="email" class="form-control" placeholder="Enter Email Address" required>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-account-circle"></i>
+                            </span>
+                        </div>
+                        <div class="input-group input-lg">
+                            <input id="password" type="password" placeholder="Password" class="form-control" required>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="footer text-center">
+                        <button type="submit" class="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">SIGN IN</button>
+                        <h6 class="m-t-20"><a href="forgot-password.html" class="link">Forgot Password?</a></h6>
+                        <h6 class="m-t-20"><a href="/signup" class="link">Create an Account? <span style="text-decoration: underline;color: #41cbd0;">Signup</span></a></h6>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>,
+                <span>Designed by <a style="color: #41cbd1;" href="#" target="_blank">Polydimensional</a></span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Jquery Core Js -->
+<script src="js/libscripts.bundle.js"></script>
+<script src="js/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+$('#form').submit(function(e){
+        e.preventDefault();
+        var obj={
+            email:document.getElementById('email').value,
+            password:document.getElementById('password').value
+        }
+        console.log(obj);
+        $.ajax({
+						type: 'POST',
+						data: JSON.stringify(obj),
+				        contentType: 'application/json',
+                        url: '/checklogin',						
+                        success: function(data) {
+                            
+                            console.log(JSON.stringify(data));
+                            if(data==="0"){
+                                alert("invalid email address and password");
+                            }else if(data==="1"){
+                                alert("invalid password");
+                            }else{
+                                localStorage.setItem('key',data);
+                                alert(data);
+                                window.location="/dash";
+                            }
+                           // window.location="/dash";
+                        }
+                    });
+});
+//=============================================================================
+$('.form-control').on("focus", function() {
+    $(this).parent('.input-group').addClass("input-group-focus");
+}).on("blur", function() {
+    $(this).parent(".input-group").removeClass("input-group-focus");
+});
+</script>
+</body>
+</html>
