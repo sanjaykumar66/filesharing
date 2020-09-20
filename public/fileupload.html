@@ -247,7 +247,8 @@
                         var t = "1234567890ABCDEFGHIJKLMN";
                          //    var d = "12345678";
                         var key = CryptoJS.MD5(t).toString()
-                        var param = CryptoJS.TripleDES.encrypt(mid[1], key).toString();
+                        var str = mid[1];
+                        var param = CryptoJS.TripleDES.encrypt(JSON.stringify({ str  }), key).toString();
                         console.log(param.toString());
                         //console.log('decrypt',CryptoJS.TripleDES.decrypt(param, key).toString())
 
@@ -262,7 +263,6 @@
                         var ref = firebase.storage().ref().child("ISCAT/"+theFile.name);
                             ref.putString(mid[0]+"base64,"+param.toString(), 'data_url').then(function(snapshot) {
                                 snapshot.ref.getDownloadURL().then(function(downloadURL) {
-                                    //console.log("File available at", downloadURL);
                                      file_info.push({
                                         data:downloadURL,
                                         name:theFile.name,
@@ -270,9 +270,10 @@
                                         index:file_index,
                                         type:theFile.type
                                             })
+                                            
                                     });
                             });
-                    
+                
                    // console.log(e.target.result);
                      document.getElementById('file_list').innerHTML+=`<div id="file_key_`+file_index+`" class="col-lg-3 col-md-4 col-sm-12 pb-2">
                 <div class="card pb-4 mb-0">
@@ -312,7 +313,7 @@
     }
 
     function upload(){
-
+console.log(file_info);
        
 
     document.getElementById("loader").style.display="block";
@@ -321,15 +322,16 @@
             id:localStorage.getItem('key')
         }
         console.log(file_info);
-        $.ajax({
-						type: 'POST',
-						data: JSON.stringify(obj),
-				        contentType: 'application/json',
-                        url: '/uploading',						
-                        success: function(data) {
-                            console.log(JSON.stringify(data));
-                            if(data=="2"){
-                                document.getElementById("loader").style.display="none";
+        for(i in obj.data){
+          var key = firebase.database().ref("users/"+obj.id+"/files").push({
+            name:obj.data[i].name,
+            url:obj.data[i].data,
+            size:obj.data[i].size,
+            type:obj.data[i].type
+          })
+         }
+
+         document.getElementById("loader").style.display="none";
                                 swal({
                                      title: "Good job!",
                                      text: "File uploaded successfully",
@@ -342,13 +344,22 @@
                                     closeOnCancel: false
                                  }, function (isConfirm) {
                                            if (isConfirm) {
-                                               window.location="/myfiles"
+                                            //   window.location="/myfiles"
                                          } 
                                     });
-                            }
-                           // window.location="/dash";
-                        }
-                    });
+        // $.ajax({
+		// 				type: 'POST',
+		// 				data: JSON.stringify(obj),
+		// 		        contentType: 'application/json',
+        //                 url: '/uploading',						
+        //                 success: function(data) {
+        //                     console.log(JSON.stringify(data));
+        //                     if(data=="2"){
+                               
+        //                     }
+        //                    // window.location="/dash";
+        //                 }
+        //             });
     }
 
 

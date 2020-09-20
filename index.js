@@ -69,15 +69,11 @@ app.post("/register", function(request, response) {
     var obj = request.body;
 
     var encrypted =  bf.base64Encode(bf.encrypt(obj.password));
-    // console.log(encrypted);
     var ref = firebase.database().ref("users/").push({
         name:obj.name,
         email:obj.email,
         password:encrypted
     })
-    // var encrypted = bf.base64Decode(encrypted);
-    // var decrypted = bf.decrypt(encrypted);
-    // console.log(decrypted);
     response.send("sucess");
 })
 
@@ -211,23 +207,18 @@ app.get("/fileslist",function(req,res){
   })
   //res.send("Gre");
 })
+
+
 app.post("/uploading", multer.single('file'), function(request, response) {
     var obj = request.body;
     var i=0;
     for(i in obj.data){
-    
-      // uploadImage(obj.data[i].data,obj.data[i].name).then(res=>{
           var key = firebase.database().ref("users/"+obj.id+"/files").push({
             name:obj.data[i].name,
             url:obj.data[i].data,
             size:obj.data[i].size,
             type:obj.data[i].type
           })
-          // var ref = firebase.database().ref("users/"+obj.id+"/files/"+key.key);
-          // ref.putString(obj.data[i].data, 'data_url').then(function(snapshot) {
-          //   console.log('Uploaded a data_url string!');
-          // });
-      // })
     }
     response.send("2");
 })

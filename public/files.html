@@ -239,7 +239,7 @@
                         var a = Object.keys(data);
                         var index=0;
                         for(i in data){
-
+                            console.log(data[i]);
                             sharelist='';
                             if(data[i].hasOwnProperty('share')){
                                 sharelist='<li class="m-r-15"><small>Sharing</small></li>';
@@ -263,7 +263,7 @@
                                         <a onclick="deletefile('`+a[index]+`')" role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
                                     </li>
                                     <li class="share">
-                                        <a onclick="downloadfile('`+data[i].url+`')"  role="button" class="boxs-edit"><i class="zmdi zmdi-download"></i></a>
+                                        <a onclick="downloadfile('`+data[i].url+`','`+data[i].name+`')"  role="button" class="boxs-edit"><i class="zmdi zmdi-download"></i></a>
                                     </li>
                                    
                                 </ul>
@@ -310,29 +310,24 @@ function sendfile(){
             });
 }
 
-function downloadfile(url){
+function downloadfile(url,name){
 
 toDataURL(url, function(dataUrl) {
- console.log('RESULT:', dataUrl)
-  let data = dataUrl;
-  const mimeType = data.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/)[1]
-  let mid = data.split('base64,');
-
-
+ //console.log('RESULT:', dataUrl)
+    let data = dataUrl;
+    const mimeType = data.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/)[1]
+    let mid = data.split('base64,');
     var t = "1234567890ABCDEFGHIJKLMN";
     var key = CryptoJS.MD5(t).toString()
     var param = mid[1];
-    console.log(param.toString());
+  //  console.log(param.toString());
     var descrypt = CryptoJS.TripleDES.decrypt(param, key).toString(CryptoJS.enc.Utf8);
-
-    // let key = "1234567890ABCDEFGHIJKLMN"
-    // let IV = "12345678"
-    // let cipher = CryptoJS.TripleDES.decrypt(mid[1], CryptoJS.enc.Utf8.parse(key), {
-    //                                     iv: CryptoJS.enc.Utf8.parse(IV),
-    //                                     mode: CryptoJS.mode.CBC
-    //             });
-    console.log(mid[0]+"base64,"+descrypt.toString());
-
+    var str = JSON.parse(descrypt.toString())
+   // console.log(mid[0]+"base64,"+ str.str);
+    var a = document.createElement("a"); 
+    a.href = mid[0]+"base64,"+ str.str
+    a.download = name; 
+    a.click();
 })
 }
 
